@@ -2,7 +2,7 @@
 COMENTARIOS DE MAS DE UNA LINEA"""
 # PARA COMENTARIOS EN UNA LINEA UTILIZAMOS #
 
-"""tunombre=input("Ingresa tu nombre:")
+"""asdasdasdtunombre=input("Ingresa tu nombre:")
 print(f"Hola {tunombre}!!!")
 
 nombre1=input("ingrese nombre del producto:")
