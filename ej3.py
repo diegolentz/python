@@ -1,20 +1,15 @@
-"""3.c. Se necesita obtener el promedio simple de un estudiante a partir de
-sus tres notas parciales N1, N2 y N3."""
+"""3.	Desarrolla un programa que dada una cierta cantidad de galones, los convierta a 
+litros y dada una medida en millas las convierta a metros, ambos con entrada de 
+tipo flotante. """
 
+gallon = 3.78   #1 galon = litros
+millas = 1.60   #1 milla = km
 
-print(f"se ingresaran 3 notas y se calculara su promedio \n")
+galones = float(input("introduzca la cantidad de galones \n"))
+miyas = float(input("introduzca la cantidad de millas \n"))
 
-i = 0
+totalLitro = round(galones / gallon,2)
+totalKm = round(miyas / millas,2)
 
-nota1 = int(input("ingrese la nota 1 \n"))
-nota2 = int(input("ingrese la nota 2 \n"))
-nota3 = int(input("ingrese la nota 3 \n"))
-
-
-promedio = ((nota1 + nota2 + nota3)/3)
-
-print(f"su promedio fue de: {promedio}")
-
-if promedio > 6 : 
-    print(f"pasastes")
-print(f"ripiastes")
+print(f"{galones} son {totalLitro} lts")
+print(f"{miyas} son {totalKm} kms")

@@ -1,16 +1,11 @@
-"""3.d. Desarrolla un algoritmo que permita, dados ciertos centímetros como
-entrada de tipo flotante, emitir por pantalla su equivalencia en pies (enteros) 
-y en pulgadas (flotante, con 3 decimales)."""
+"""4.	Realiza un programa que dadas una cantidad de segundos los convierta en horas
+, minutos y segundos."""
 
-print(f"se convertiran cm -> pies y pulgadas \n")
+segundosUser = int(input("Ingrese la cantidad de segundos: "))
+hora = segundosUser // 3600
+segundosRestantes = segundosUser % 3600 #uso el resto para calcular los minutos y segundos
+minutos = segundosRestantes // 60 #aca atrapo los minutos
+segundos = segundosRestantes % 60 #el resto son los segundos
 
-pie = 30.48
-pulgada = 2.54
-
-medida = float(input("ingrese la medida en cm \n"))
-
-pie = round(medida/pie,3)
-pulgada = round(medida/pulgada,3)
-
-print(f"en pies son {pie} \n en pulgadas {pulgada}")
-
+# Mostrar el resultado
+print(f"{segundosUser} segundos equivalen a \n{hora} horas  \n{minutos} minutos  \n{segundos} segundos.")
