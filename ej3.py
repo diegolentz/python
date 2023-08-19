@@ -1,15 +1,21 @@
-"""3.	Desarrolla un programa que dada una cierta cantidad de galones, los convierta a 
-litros y dada una medida en millas las convierta a metros, ambos con entrada de 
-tipo flotante. """
+"""3. Crear un programa que permita al usuario elegir un candidato por el cual votar. Las posibilidades son:
+candidato A por el partido rojo, candidato B por el partido verde, candidato C por el partido azul.
+Según el candidato elegido (A, B ó C)  se le debe imprimir el mensaje “Usted ha votado por el partido
+[color que corresponda al candidato elegido]”. Si el usuario ingresa una opción que no corresponde a 
+ninguno de los candidatos disponibles, indicar “Opción errónea”."""
 
-gallon = 3.78   #1 galon = litros
-millas = 1.60   #1 milla = km
+print("elija su voto:")
+print("A - Candidato A por el partido rojo")
+print("B - Candidato B por el partido verde")
+print("C - Candidato C por el partido azul")
 
-galones = float(input("introduzca la cantidad de galones \n"))
-miyas = float(input("introduzca la cantidad de millas \n"))
+voto = input("Elija su candidato (A/B/C): ").upper()
 
-totalLitro = round(galones / gallon,2)
-totalKm = round(miyas / millas,2)
-
-print(f"{galones} son {totalLitro} lts")
-print(f"{miyas} son {totalKm} kms")
+if voto == 'A':
+    print("votaste el partido rojo.")
+elif voto == 'B':
+    print("votaste el partido verde.")
+elif voto == 'C':
+    print("votaste el partido azul.")
+else:
+    print("Opción errónea.")

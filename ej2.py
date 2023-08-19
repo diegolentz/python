@@ -1,19 +1,16 @@
-"""2.	Desarrolla un programa que permita leer 2 valores y que emita por pantalla la suma, la resta
-, el producto, la división, el resto, el promedio y el doble producto del primero menos la mitad 
-del segundo.     """
+"""2. Requerir al usuario que ingrese un día de la semana e imprimir un mensaje si es lunes,
+otro mensaje diferente si es viernes, otro mensaje diferente si es sábado o domingo. 
+Si el día ingresado no es ninguno de esos, imprimir otro mensaje."""
 
-numero1 = float(input("ingrese el primer valor \n"))
-numero2 = float(input("ingrese el segundo valor \n"))
+dia = input("ingrese el dia \n")
+diaMayus = dia.upper()
 
-suma = numero1 + numero2
-resta = numero1 - numero2
-multi = numero1 * numero2
-promedio = (numero1 + numero2)/2
-dobleMitad = (numero1*2)-(numero2*0.5)
-
-if numero2 == 0 :
-    print(f"no se puede dividir por 0!")
-div = numero1 / numero2
-
-print(f"los numeros ingresados fueron {numero1} y {numero2} \n" )
-print(f"suma: {suma} \nresta: {resta} \nmultiplicacion: {multi} \npromedio: {promedio} \n2*priomero - segundo/2: {dobleMitad}")
+if diaMayus == 'LUNES':
+    print(f"es lunes papu")
+elif diaMayus == 'VIERNES':
+    print(f"es viernes papu")
+elif diaMayus == 'SABADO':
+    print(f"es sabado papu")
+elif diaMayus == 'DOMINGO':
+    print(f"es domingo papu")
+else : print(f"en un cumple")

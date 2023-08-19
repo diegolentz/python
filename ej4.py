@@ -1,11 +1,13 @@
-"""4.	Realiza un programa que dadas una cantidad de segundos los convierta en horas
-, minutos y segundos."""
+"""4. Escribir un programa que solicite al usuario una letra y, si es una vocal, muestre el mensaje
+“es vocal”. Se debe validar que el usuario ingrese sólo un carácter. Si ingresa un string de más de un 
+carácter, informarleque no se puede procesar el dato."""
 
-segundosUser = int(input("Ingrese la cantidad de segundos: "))
-hora = segundosUser // 3600
-segundosRestantes = segundosUser % 3600 #uso el resto para calcular los minutos y segundos
-minutos = segundosRestantes // 60 #aca atrapo los minutos
-segundos = segundosRestantes % 60 #el resto son los segundos
+letra = input("ingrese una letra \n").upper()
 
-# Mostrar el resultado
-print(f"{segundosUser} segundos equivalen a \n{hora} horas  \n{minutos} minutos  \n{segundos} segundos.")
+if len(letra) == 1:
+        if letra in 'AEIOU':
+            print(f"es vocal")
+        else:
+            print(f"es consonante")
+else:         
+            print(f"oprimio mas de una letra")
