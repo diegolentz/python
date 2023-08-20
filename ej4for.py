@@ -2,7 +2,7 @@
 siendo n un dato entero"""
 
 
-numero = int(input("Ingrese la cantidad de números de la secuencia de Fibonacci que desea mostrar: "))
+numero = int(input("Ingrese la cantidad de números de la secuencia de Fibonacci que desea mostrar: \n"))
 
 fibonacci = [0, 1]
 
