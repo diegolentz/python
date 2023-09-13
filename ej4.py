@@ -1,32 +1,38 @@
-"""Diseña un programa que facilite el trabajo con conjuntos. Recuerda que un conjunto es una lista
-en la que no hay elementos repetidos. Debes implementar: 
+"""4. El propietario de una fábrica electrodomésticos, que opera una línea de producción, tiene dos productos
+principales y necesita un gráfico de barras comparativo, de diferentes colores para representar la
+producción de cada producto durante 5 días, lunes a viernes. El eje horizontal mostraría los días
+y el eje vertical las barras que representan la producción. Como datos tenemos:
+prod1 = (20, 35, 30, 35, 27)
+prod2 = (25, 32, 34, 20, 25)
+dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes']
+Podría representarse la diferencia de fabricación entre productos en el mismo gráfico?"""
 
-• lista_a_conjunto(lista): Devuelve un conjunto con los mismos elementos que hay en lista
-    pero sin repeticiones. (Ejemplo: lista_a_conjunto([1,1,3,2,3])
-    devolverá la lista [1, 2, 3] (aunque también se acepta como equivalente cualquier permutación de esos 
-    mismos elementos, como [3,1,2] o [3,2,1]). 
-• union(A, B): devuelve el conjunto resultante de unir los conjuntos A y B. 
-• interseccion(A, B): devuelve el conjunto cuyos elementos pertenecen a A y a B.
-• diferencia(A, B): devuelve el conjunto de elementos que pertenecen a A y no a B. 
-•iguales(A, B): devuelve cierto si ambos conjuntos tienen los mismos elementos, y falso en caso contrario."""
 
-lista = [1,1,3,2,3]
-listb = [2,3,2,4]
-#1
-conjuntoa = set(lista)
-conjuntob = set(listb)
+import matplotlib.pyplot as plt
+import numpy as np
 
-print(conjuntoa)
-print(conjuntob)
-#2
-conjuntoc = conjuntoa | conjuntob
-print(conjuntoc)
-#3
-conjuntod = conjuntoa & conjuntob
-print(conjuntod)
-#4
-conjuntoe = conjuntoa - conjuntob
-print(conjuntoe)
-#5
-conjuntof = conjuntoa == conjuntob
-print(f"son iguales papu? \n{conjuntof}")
+#listas de productos y dias
+prod1 = (20, 35, 30, 35, 27)
+prod2 = (25, 32, 34, 20, 25)
+dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes']
+
+# Rango de valores para el eje x
+x = np.arange(len(dias))
+# Ancho de las barras
+ancho_barra = 0.35
+
+# Crear el gráfico de barras agrupadas
+plt.figure(figsize=(8, 6))
+
+plt.bar(x - ancho_barra/2, prod1, ancho_barra, label='prod1', color='blue', alpha=0.6)
+plt.bar(x + ancho_barra/2, prod2, ancho_barra, label='prod2', color='green', alpha=0.6)
+
+plt.xlabel('Dias')
+plt.ylabel('Valor')
+plt.title('Comparación semanal de productos')
+plt.xticks(x, dias, rotation=45)  # Etiquetas de países en el eje x con rotación
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+
