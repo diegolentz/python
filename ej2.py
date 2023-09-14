@@ -1,18 +1,32 @@
+"""2.	En una escuela de 600 alumnos, 100 no estudian ningún idioma extranjero (solo estudian ingles),
+450 estudian francés y 50  estudian francés e inglés. ¿Cuántos estudian solo inglés?
+"""
 import matplotlib.pyplot as plt
+from matplotlib_venn import venn2
 
-# Listas de nombres de países y sus respectivos PIB en millones de dólares
-paises = ["Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Ecuador", "Guyana", "Mexico", "Paraguay", "Peru", "Suriname", "Uruguay", "Venezuela"]
-pib = [440769.2, 29702.8, 2364409.9, 286013.8, 394571.1, 885547.7,4780.6,1309880.9,37260.6,210881.6,4678.2,50532.1,116067.8]
+# Cantidad total de alumnos en la escuela
+total = 600
 
+# Cantidad de alumnos que no estudian ningún idioma extranjero
+ingles = 100
 
-plt.figure(figsize=(10, 10))
+# Cantidad de alumnos que estudian francés
+frances = 450
 
-desfase = [0.1 if pais == 'Argentina' else 0 for pais in paises]
-plt.pie(pib ,labels = paises , autopct='%1.1f%%', explode = desfase)
+# Cantidad de alumnos que estudian francés e inglés
+estudian_frances_ingles = 50
 
-plt.title('Distribución del PIB de países latinoamericanos al 15/DIC/2020')
+# Calcular la cantidad de alumnos que estudian solo inglés
+# Usamos la fórmula de Venn: B - (A ∩ B)
+estudian_ingles = total - (ingles + frances)
 
-plt.axis('equal')  # Aspecto igual para que el gráfico sea un círculo
+# Crear un diagrama de Venn
+venn2(subsets=(ingles, frances, estudian_ingles),
+      set_labels=('No Estudian ', 'Estudian Francés o Inglés'))
 
-plt.tight_layout()  # Ajustar el diseño de la figura
-plt.show()  # Mostrar el gráfico
+# Mostrar el diagrama de Venn
+plt.title('Diagrama de Venn - Estudiantes de Francés e Inglés')
+plt.show()
+
+# Imprimir la cantidad de estudiantes que estudian solo inglés
+print(f"Cantidad de estudiantes que estudian solo inglés: {estudian_ingles}")

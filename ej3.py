@@ -1,28 +1,37 @@
+"""3.	En una escuela de 500 estudiantes, hay:
+
+- 125 estudiantes inscriptos en Álgebra II, 
+- 275 estudiantes que practican deportes y 
+- 52 estudiantes que están inscriptos en Álgebra II y practican deportes. 
+
+Crea un diagrama de Venn para ilustrar esta información."""
+
 import matplotlib.pyplot as plt
-import numpy as np
+from matplotlib_venn import venn2
 
-# Listas de nombres de países, población y superficie (datos de ejemplo)
-paises = ["Estados Unidos", "Brasil", "México", "Colombia", "Argentina"]
-poblacion = [331002651, 212559417, 128932753, 50882891, 45195774]
-superficie = [9981930, 85148770, 19643750, 11417480, 27926000]
+# Cantidad total de estudiantes
+total = 500
 
+# Estudiantes inscritos en Álgebra II
+algebra = 125
 
-# Rango de valores para el eje x
-x = np.arange(len(paises))
-# Ancho de las barras
-ancho_barra = 0.35
+# Estudiantes que practican deportes
+deportes = 275
 
-# Crear el gráfico de barras agrupadas
-plt.figure(figsize=(12, 6))
-#uso el x y el ancho de barra, pone una barra a la izquierda y la otra a la derecha
-plt.bar(x - ancho_barra/2, poblacion, ancho_barra, label='Población', color='blue', alpha=0.6)
-plt.bar(x + ancho_barra/2, superficie, ancho_barra, label='Superficie', color='green', alpha=0.6)
+# Estudiantes inscritos en Álgebra II y que practican deportes
+algebra_deportes = 52
 
-plt.xlabel('Países')
-plt.ylabel('Valor')
-plt.title('Comparación de Población y Superficie por País')
-plt.xticks(x, paises, rotation=45)  # Etiquetas de países en el eje x con rotación
-plt.legend()
+# Calcular estudiantes que solo hacen una actividad
+soloAlgebra = algebra - algebra_deportes 
+soloDeportes = deportes - algebra_deportes 
 
-plt.tight_layout()
+# Calcular estudiantes que no hacen ninguna de las dos actividades
+#ningunaActividad = total - (algebra + deportes + algebra_deportes)
+
+# Crear un diagrama de Venn
+venn2(subsets=(soloAlgebra, soloDeportes,algebra_deportes),
+      set_labels=('Álgebra II', 'Deportes'))
+
+# Mostrar el diagrama de Venn
+plt.title('Diagrama de Venn - Estudiantes en Álgebra II y Deportes')
 plt.show()

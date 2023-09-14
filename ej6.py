@@ -1,30 +1,68 @@
-"""6. Traza un gráfico de dispersión (puntos) de los siguientes datos que representan las calificaciones de dos grupos de
-deportistas dentro de un rango (eje x). Identifica los valores de cada grupo con un color distinto.
-grupo1 = [89, 90, 70, 89, 100, 80, 90, 100, 80, 34]
-grupo2 = [30, 29, 49, 48, 100, 48, 38, 45, 20, 30]
-rango = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+"""6.	Crea un diagrama de Venn para representar la información siguiente y responder las preguntas: 
+En una encuesta a 15 estudiantes secundarios, se descubrió que: 
+•	80 estudiantes tienen laptops.
+•	110 estudiantes tienen celulares.
+•	125 estudiantes tienen iPod
+•	50 estudiantes tienen los tres objetos.
+
+
+•	62 estudiantes tienen una laptop y un celular.
+•	58 estudiantes tienen una laptop y un iPod.
+•	98 estudiantes tienen un celular y un iPod.
+Responde:
+a. ¿Cuántos estudiantes tienen solo un celular?
+b. ¿Cuántos estudiantes no tienen ninguno de los objetos mencionados?
+c. ¿Cuántos estudiantes tienen un iPod y una laptop, pero no un celular?
 """
+#hay que mirar los calculos pero esta...
+
 
 import matplotlib.pyplot as plt
+from matplotlib_venn import venn3
 
-grupo1 = [89, 90, 70, 89, 100, 80, 90, 100, 80, 34]
-grupo2 = [30, 29, 49, 48, 100, 48, 38, 45, 20, 30]
-rango = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+# Cantidad total de estudiantes encuestados
+total_estudiantes = 15
 
-# Crear el gráfico de dispersión para el grupo1
-plt.scatter(rango, grupo1, label='Grupo 1', color='blue', marker='o')
+# Cantidad de estudiantes que tienen laptops
+estudiantes_laptop = 80
 
-# Crear el gráfico de dispersión para el grupo2
-plt.scatter(rango, grupo2, label='Grupo 2', color='red', marker='x')
+# Cantidad de estudiantes que tienen celulares
+estudiantes_celular = 110
 
-# Agregar etiquetas y título al gráfico
-plt.xlabel('Rango')
-plt.ylabel('Calificaciones')
-plt.title('Gráfico de Dispersión de Calificaciones de Dos Grupos de Deportistas')
+# Cantidad de estudiantes que tienen iPod
+estudiantes_ipod = 125
 
-# Agregar una leyenda para identificar los grupos
-plt.legend()
+# Cantidad de estudiantes que tienen los tres objetos
+estudiantes_tres_objetos = 50
 
-# Mostrar el gráfico
-plt.grid(True)
+
+
+# Cantidad de estudiantes que tienen una laptop y un celular
+estudiantes_laptop_celular = (62 - estudiantes_tres_objetos)
+
+# Cantidad de estudiantes que tienen una laptop y un iPod
+estudiantes_laptop_ipod = (58 - estudiantes_tres_objetos)
+
+# Cantidad de estudiantes que tienen un celular y un iPod
+estudiantes_celular_ipod = (98 - estudiantes_tres_objetos)
+
+
+lap = estudiantes_tres_objetos + estudiantes_laptop_ipod  + estudiantes_laptop_celular
+cel = estudiantes_tres_objetos + estudiantes_celular_ipod + estudiantes_laptop_celular
+ipo = estudiantes_tres_objetos + estudiantes_celular_ipod + estudiantes_laptop_ipod
+
+# Crear un diagrama de Venn
+venn3(subsets= (estudiantes_laptop - lap,
+                estudiantes_celular - cel,
+                estudiantes_ipod - ipo,
+                estudiantes_laptop_celular,
+                estudiantes_celular_ipod,
+                estudiantes_laptop_ipod,
+                estudiantes_tres_objetos),
+      set_labels=('Laptop', 'Celular', 'iPod'))
+
+# Mostrar el diagrama de Venn
+plt.title('Diagrama de Venn - Estudiantes y Sus Dispositivos')
 plt.show()
+
+
