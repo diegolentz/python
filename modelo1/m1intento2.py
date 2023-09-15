@@ -79,10 +79,10 @@ squashTenis = (cuantos(squashSet,tenisSet))
 squashFutbol = (cuantos(squashSet,futbolSet))
 
 print(f"\nlos que practucan 2 deportes\n")
-print(f"{suma(tenisFutbol)} para tenis/futbol")
-print(f"{suma(squashTenis)} para squash/tenis")
-print(f"{suma(squashFutbol)} para squash/futbol")
-print(f"{suma(todosDeportes)} para los que hacen de todo")
+print(f"{suma(tenisFutbol)} para tenis/futbol{tenisFutbol}")
+print(f"{suma(squashTenis)} para squash/tenis{squashTenis}")
+print(f"{suma(squashFutbol)} para squash/futbol{squashFutbol}")
+print(f"{suma(todosDeportes)} para los que hacen de todo{todosDeportes}")
 
 """
 1-¿cuántos entrenan sólo tenis?
@@ -94,22 +94,16 @@ print(f"{suma(todosDeportes)} para los que hacen de todo")
 def solos(x,y,z):
     return (x-y)&(x-z)
 
-def tenisoFutbol(x,y,z):
-    
-    return ((y-z)&(y-x))|((x-z)&(x-y)) 
-
 soloTenis = {sum(solos(tenisSet,squashSet,futbolSet))}
 soloFutbol = {sum(solos(futbolSet,squashSet,tenisSet))}
 soloSquash = {sum(solos(squashSet,futbolSet,tenisSet))}
-tenesoFutbol = {sum(tenisoFutbol(tenisSet,futbolSet,squashSet))}
 
 print(f"\nlos que practucan solos 1 deporte\n")
-print(f"{soloTenis} para tenis/futbol")
-print(f"{soloFutbol} para squash/tenis")
-print(f"{soloSquash} para squash/futbol")
-print(f"{tenesoFutbol} para tenis o futbol")
+print(f"{soloTenis} para tenis")
+print(f"{soloFutbol} para futbol")
+print(f"{soloSquash} para squash")
 
-
+"""
 def sumaOcupados(soloFutbol, soloTenis, soloSquash, todosDeportes, tenisFutbol, squashFutbol, squashTenis):
     vacio={0}
     vacio.update(soloFutbol)
@@ -123,13 +117,20 @@ def sumaOcupados(soloFutbol, soloTenis, soloSquash, todosDeportes, tenisFutbol, 
     resultado = suma 
     return resultado
 
+#ocupados = sumaOcupados(soloFutbol, soloTenis, soloSquash, todosDeportes, tenisFutbol, squashFutbol, squashTenis)
+"""
+
 universo = 100
-ocupados = sumaOcupados(soloFutbol, soloTenis, soloSquash, todosDeportes, tenisFutbol, squashFutbol, squashTenis)
-libres = universo - ocupados
+ocupados = soloFutbol| soloTenis| soloSquash| todosDeportes| tenisFutbol| squashFutbol| squashTenis
+libres = universo - sum(ocupados)
+
+tenisoFutbol = {sum(ocupados) - sum(soloSquash)}
+print(f"{tenisoFutbol} para tenis o futbol")
+
 
 print(f"\nvalores\n")
 print(f"{universo} universo")
-print(f"{ocupados} ocupados")
+print(f"{sum(ocupados)} ocupados")
 print(f"{libres} ningun deporte")
 
 
@@ -196,7 +197,7 @@ plt.text(-1.10, -0.50,
                    fc=(1.0, 0.9, 0.8),))
 
 plt.text(-1.10, -0.60,
-         s="Entrenan tenis o fútbol = " + str(tenesoFutbol),
+         s="Entrenan tenis o fútbol = " + str(tenisoFutbol),
          size=8,
          ha="left",  # alineación horizontal
          va="bottom",  # alineación vertical
